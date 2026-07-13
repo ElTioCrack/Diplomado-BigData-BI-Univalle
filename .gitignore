@@ -2,8 +2,7 @@
 # REPOSITORIO: DIPLOMADO BIG DATA, ANALYTICS & BI
 # =================================================================
 
-# --- Python & Virtual Environments ---
-# Ignora entornos virtuales sin importar el nombre común
+# --- Python & virtual environments ---
 .venv/
 venv/
 env/
@@ -13,55 +12,76 @@ dist/
 *.egg-info/
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
 *$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# --- Jupyter Notebooks ---
-# Ignora archivos temporales y checkpoints de guardado automático
+# --- Jupyter / notebooks ---
 .ipynb_checkpoints/
 .virtual_documents/
-.ipynb/
+*.nbconvert.ipynb
 
-# --- Multimedia & Class Recordings ---
-# Bloqueo total de archivos de video pesados en cualquier subcarpeta
+# --- LaTeX / document build artifacts ---
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# --- Multimedia & large binary files ---
 *.mp4
 *.mkv
 *.avi
 *.mov
 *.wmv
 *.flv
+*.gif
 
-# --- Compressed & Large Data Files ---
-# Ignora archivos comprimidos (comúnmente usados para datasets pesados)
+# --- Archives and large data bundles ---
 *.zip
 *.rar
 *.7z
 *.tar
 *.gz
 
-# --- Databases & Local Secrets ---
-# Ignora bases de datos locales y variables de entorno sensibles
+# --- Databases & secrets ---
 *.sqlite3
 *.db
 *.sql
 .env
 .flaskenv
 
-# --- IDEs & System Garbage ---
-# Microsoft Visual Studio Code
+# --- Temporary / editor / OS files ---
+*.tmp
+*.temp
+*.bak
+*.orig
+*.swp
+*.swo
+*~
+
+# --- IDEs ---
 .vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-# JetBrains (PyCharm, IntelliJ)
 .idea/
 
-# Windows / macOS System files
+# --- System files ---
 Thumbs.db
 desktop.ini
 .DS_Store
 
-# --- Academic Resources (Optional) ---
-# Descomenta la siguiente línea si quieres ignorar PDFs pesados en /recursos
+# --- Academic resources (optional) ---
+# Descomenta la siguiente línea si quieres ignorar PDFs generados en carpetas de recursos o reportes.
 # *.pdf
