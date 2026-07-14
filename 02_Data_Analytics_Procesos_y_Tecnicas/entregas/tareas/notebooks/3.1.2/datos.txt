@@ -1,4 +1,0 @@
-nombre,Ana
-edad,25
-ciudad,Barcelona
-profesion,ingeniera
