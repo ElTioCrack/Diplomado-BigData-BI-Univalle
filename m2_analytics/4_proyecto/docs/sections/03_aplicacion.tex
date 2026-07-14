@@ -1,0 +1,28 @@
+% ========== sections/03_aplicacion.tex ==========
+\section{Área de Aplicación}
+
+\subsection{Contexto del dominio}
+
+La industria del streaming musical ha experimentado un crecimiento exponencial en la última década. Plataformas como Spotify, Apple Music y Amazon Music han transformado la forma en que los consumidores acceden a la música. Actualmente, Spotify cuenta con cientos de millones de usuarios activos mensuales y alberga más de 100 millones de canciones en su catálogo.
+
+Las listas de reproducción generadas algorítmicamente, como Discover Weekly o las listas Top 50 de cada país, constituyen el principal punto de contacto entre la plataforma y el usuario. Detrás de estas recomendaciones existen modelos de aprendizaje automático que analizan las características acústicas de las canciones.
+
+Comprender qué perfiles acústicos predominan entre los grandes éxitos tiene implicaciones directas para la industria: permite optimizar algoritmos de recomendación, orientar decisiones de inversión de discográficas y guiar a artistas independientes sobre qué características potenciar en sus lanzamientos.
+
+\subsection{Dataset seleccionado}
+
+El dataset utilizado en este proyecto se denomina \textit{Top Spotify Songs in 73 Countries (Daily Updated)} \cite{asaniczka2025}, obtenido de la plataforma Kaggle. Contiene las canciones que han aparecido en las listas Top 50 mundial.
+
+\subsection{Aporte alternativo (diferenciación)}
+
+A continuación, se detallan las diferencias entre el presente trabajo y los análisis públicos existentes en Kaggle:
+
+\textbf{Primera diferencia: enfoque del problema.} La mayoría de los cuadernos disponibles se centran en tareas de regresión o en análisis exploratorio. El presente trabajo aborda un problema de clustering no supervisado.
+
+\textbf{Segunda diferencia: comparación de múltiples algoritmos.} Mientras que los trabajos existentes utilizan únicamente K-Means, este proyecto implementa y compara dos algoritmos: K-Means y DBSCAN.
+
+\textbf{Tercera diferencia: nomenclatura interpretable.} Este trabajo asigna nombres descriptivos a los clusters, facilitando la comunicación a audiencias no técnicas.
+
+\textbf{Cuarta diferencia: análisis de contenido explícito.} Se analiza posteriormente si las canciones con contenido explícito se concentran en determinados clusters, sin utilizarlo como variable de entrada del modelo.
+
+\textbf{Quinta diferencia: caracterización accionable.} El proyecto entrega una caracterización acústica detallada para cada perfil musical identificado.

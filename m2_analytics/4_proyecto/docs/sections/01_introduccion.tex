@@ -1,0 +1,21 @@
+% ========== sections/01_introduccion.tex ==========
+\section{Introducción}
+
+\subsection{Problema que abordamos}
+
+En la industria del streaming musical, plataformas como Spotify generan diariamente millones de datos sobre las preferencias de los oyentes. Sin embargo, para una discográfica o un artista independiente, la pregunta clave no es únicamente qué canción es popular, sino qué perfiles musicales tienden a repetirse entre los grandes éxitos. ¿Predominan las canciones con alta capacidad de baile sobre las baladas de baja energía? ¿Las canciones con contenido explícito conforman un grupo propio? ¿Existe una combinación de características acústicas que distinga a las canciones del Top 50?
+
+El presente proyecto busca responder estas interrogantes mediante técnicas de clustering no supervisado (k-means y DBSCAN), con el objetivo de \textbf{caracterizar y tipificar los perfiles acústicos predominantes en el Top 50 mundial}. Los resultados obtenidos no tienen capacidad predictiva sobre el éxito futuro, pero permiten una \textbf{descripción empírica y cuantitativa de los patrones acústicos presentes en canciones exitosas}. Dicha caracterización constituye un punto de partida para estudios posteriores orientados a la producción y el análisis de tendencias musicales.
+
+\subsection{Preguntas de investigación}
+
+\begin{enumerate}
+    \item ¿Cuántos grupos naturales de canciones existen en el Top 50 mundial de Spotify?
+    \item ¿Es posible asignar nombres descriptivos a los \textit{clusters} basándose en sus valores promedio de \texttt{danceability}, \texttt{energy} y \texttt{valence}?
+    \item ¿Qué combinación de valores caracteriza a cada perfil musical?
+    \item ¿Cuál de los dos algoritmos de clustering evaluados (\textit{k-means} vs \textit{DBSCAN}) produce una mejor separación de los datos, medida mediante el coeficiente de \textit{Silhouette}?
+\end{enumerate}
+
+\subsection{Pertinencia e interés para el curso}
+
+El proyecto documenta todas las fases del ciclo de vida de un proyecto de datos, incluyendo adquisición, preprocesamiento, modelado y evaluación. Los resultados obtenidos permiten describir objetivamente los perfiles acústicos de las canciones exitosas, demostrando la utilidad del análisis de datos en un sector concreto. Adicionalmente, la comparación entre k-means y DBSCAN aporta criterios para la selección de algoritmos de clustering en dominios con características musicales reales.

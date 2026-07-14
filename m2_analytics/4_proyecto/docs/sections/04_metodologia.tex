@@ -1,0 +1,148 @@
+% ========== sections/04_metodologia.tex ==========
+\section{Metodología}
+
+% ========== subsection/01 ==========
+\subsection{Adquisición del conjunto de datos}
+
+El conjunto de datos empleado en este estudio, titulado \textit{Top Spotify Songs in 73 Countries (Daily Updated)} y publicado por el usuario Asaniczka en la plataforma Kaggle \cite{asaniczka2025}, fue integrado mediante un proceso automatizado. Se implementó una rutina en Python que verifica la existencia de una copia local del archivo; en caso de no estar disponible, se procede a su descarga a través de la API oficial de Kaggle empleando la librería \texttt{kagglehub}.
+
+El archivo original posee un tamaño de 474 megabytes y se encuentra en formato CSV. La carga en memoria se realizó mediante la función \texttt{read\_csv} de la librería \texttt{pandas}. El conjunto de datos está compuesto por 2.110.316 registros y 25 atributos. Entre los atributos disponibles se encuentran identificadores (\texttt{spotify\_id}, \texttt{name}, \texttt{artists}), variables temporales (\texttt{snapshot\_date}), métricas de popularidad (\texttt{popularity}) y propiedades acústicas como \texttt{danceability}, \texttt{energy}, \texttt{valence}, \texttt{tempo} y \texttt{loudness}, entre otras.
+
+Esta caracterización inicial constituye la base para las fases subsiguientes de selección de variables y preprocesamiento.
+
+% ========== subsection/02 ==========
+\subsection{Preprocesamiento y curación de datos}
+
+El preprocesamiento se inició con la selección de las variables relevantes para el análisis. Se eligieron once atributos acústicos que describen las propiedades musicales de cada canción: \texttt{danceability}, \texttt{energy}, \texttt{valence}, \texttt{acousticness}, \texttt{instrumentalness}, \texttt{liveness}, \texttt{speechiness}, \texttt{tempo}, \texttt{loudness}, \texttt{duration\_ms} y \texttt{mode}. La variable \texttt{is\_explicit} se reservó para un análisis posterior sobre la distribución del contenido explícito entre los clusters.
+
+A continuación, se aplicaron las siguientes operaciones de limpieza:
+
+\begin{itemize}
+    \item \textbf{Valores nulos:} No se detectaron valores ausentes en las once variables seleccionadas.
+    \item \textbf{Duplicados:} No se encontraron filas completamente duplicadas en el conjunto de datos.
+    \item \textbf{Valores inválidos:} Se eliminaron 30 registros que presentaban valores anómalos: aquellos con \texttt{tempo} igual a cero, \texttt{duration\_ms} no positivo, \texttt{mode} diferente de 0 o 1, o valores fuera del rango [0,1] en las variables de proporción.
+\end{itemize}
+
+Para mitigar el efecto de la alta asimetría en la distribución de tres variables (\texttt{instrumentalness}, \texttt{speechiness} y \texttt{liveness}), se aplicó una transformación logarítmica de la forma $\log(x+1)$. Esta transformación reduce el impacto de valores extremos y aproxima la distribución a una forma más cercana a la normal.
+
+Una vez aplicadas estas transformaciones, el conjunto de datos limpio (2.110.286 registros con las 11 variables acústicas) fue exportado como \texttt{spotify\_features\_clean.csv} para su uso en las etapas posteriores.
+
+% ========== subsection/03 ==========
+\subsection{Análisis exploratorio de datos}
+
+Se realizó un análisis exploratorio sobre el conjunto de datos limpio para comprender la estructura y las relaciones entre las once variables acústicas seleccionadas.
+
+\subsubsection{Estadísticos descriptivos}
+
+La Tabla \ref{tab:estadisticos} presenta los estadísticos principales de cada variable. Los resultados muestran escalas muy diferentes entre variables, lo que confirma la necesidad de estandarización previa al clustering. La Figura \ref{fig:histogramas} muestra la distribución de cada variable, donde se observa visualmente la alta asimetría en variables como \texttt{instrumentalness} y \texttt{speechiness}.
+
+\begin{table}[htbp]
+\caption{Estadísticos descriptivos de las variables acústicas}
+\centering
+\small
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Variable} & \textbf{Media} & \textbf{Mediana} & \textbf{Rango} \\
+\hline
+danceability & 0.676 & 0.700 & [0.066, 0.988] \\
+energy & 0.649 & 0.668 & [0.000, 0.998] \\
+valence & 0.546 & 0.548 & [0.000, 0.992] \\
+acousticness & 0.275 & 0.191 & [0.000, 0.996] \\
+instrumentalness & 0.019 & 0.000 & [0.000, 0.691] \\
+liveness & 0.153 & 0.115 & [0.014, 0.685] \\
+speechiness & 0.088 & 0.057 & [0.022, 0.671] \\
+tempo (BPM) & 122.101 & 119.965 & [36.6, 236.1] \\
+loudness (dB) & -6.773 & -6.064 & [-54.3, 3.2] \\
+duration (ms) & 194312 & 186191 & [16320, 1296000] \\
+mode & 0.537 & 1.000 & [0, 1] \\
+\hline
+\end{tabular}
+\label{tab:estadisticos}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/histogramas_variables.png}
+\caption{Distribución de las variables acústicas}
+\label{fig:histogramas}
+\end{figure}
+
+\subsubsection{Análisis de correlaciones y asimetría}
+
+Se generó una matriz de correlación de Pearson (Figura \ref{fig:correlacion}). La correlación más relevante fue entre \texttt{energy} y \texttt{loudness} (0.653). No se identificaron correlaciones superiores a 0.7, por lo que no fue necesario eliminar variables por redundancia.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/matriz_correlacion.png}
+\caption{Matriz de correlación de Pearson entre variables acústicas}
+\label{fig:correlacion}
+\end{figure}
+
+El análisis de asimetría reveló que \texttt{instrumentalness} (5.79), \texttt{speechiness} (1.96), \texttt{liveness} (1.91), \texttt{loudness} (-4.46) y \texttt{duration\_ms} (1.85) presentan alta asimetría, lo que justifica la transformación logarítmica aplicada en el preprocesamiento. La detección de outliers se complementa con los diagramas de caja (boxplots) presentados en la Figura \ref{fig:boxplots}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/boxplots_variables.png}
+\caption{Diagramas de caja para detección de outliers}
+\label{fig:boxplots}
+\end{figure}
+
+\subsubsection{Análisis de modo}
+
+El 53.6\% de las canciones están en modo mayor y el 46.4\% en modo menor. Esta distribución se utilizará para caracterizar los clusters encontrados.
+
+% ========== subsection/04 ==========
+\subsection{Preparación final para clustering}
+
+Previo a la aplicación de los algoritmos de clustering, se realizaron dos operaciones adicionales sobre el conjunto de datos limpio:
+
+\subsubsection{Muestreo}
+
+Debido a las limitaciones de memoria RAM del entorno de trabajo y al alto costo computacional de algunos algoritmos (notablemente DBSCAN), se optó por trabajar con una muestra aleatoria simple de 100.000 registros del conjunto de datos limpio. Esta muestra conserva las propiedades estadísticas del conjunto original y permite la ejecución eficiente de los algoritmos.
+
+\subsubsection{Estandarización}
+
+Dado que los algoritmos de clustering basados en distancias son sensibles a la escala de las variables, se aplicó una estandarización mediante \texttt{StandardScaler} de la librería \texttt{scikit-learn}. Este proceso transforma cada variable para que tenga media cero y desviación estándar uno, evitando que las diferencias de escala influyan en el cálculo de distancias entre puntos. El objeto \texttt{StandardScaler} entrenado se serializó con \texttt{joblib} para permitir su reutilización sobre nuevos datos.
+
+El resultado de esta etapa fue el archivo \texttt{spotify\_muestra\_100k\_scaled.csv}, que contiene 100.000 registros con las 11 variables estandarizadas, listo para ser utilizado en la fase de modelado.
+
+% ========== subsection/05 ==========
+\subsection{Modelado predictivo (clustering no supervisado)}
+
+Para abordar el problema de segmentación de canciones por sus propiedades acústicas, se seleccionaron dos algoritmos de clustering no supervisado: K-Means y DBSCAN. Ambos algoritmos se ejecutaron sobre la misma muestra previamente preparada de 100.000 canciones estandarizadas, contenida en el archivo \texttt{spotify\_muestra\_100k\_scaled.csv} generado en la etapa anterior. La comparación entre algoritmos permite evaluar cuál produce una mejor separación de los datos.
+
+\subsubsection{K-Means}
+
+El algoritmo K-Means agrupa los datos buscando minimizar la suma de distancias cuadradas entre cada punto y el centroide de su cluster, mediante la siguiente función objetivo:
+
+\begin{equation}
+J = \sum_{j=1}^{k} \sum_{i=1}^{n} \|x_i - \mu_j\|^2
+\end{equation}
+
+donde \(x_i\) representa cada canción descrita por sus características acústicas, \(\mu_j\) es el centroide del cluster \(j\) y \(k\) es el número de clusters.
+
+La implementación se realizó con la librería \texttt{scikit-learn} sobre la muestra de 100.000 canciones estandarizadas. Para determinar el número óptimo de clusters, se evaluaron valores de \(k\) entre 2 y 10 utilizando dos criterios:
+
+\begin{itemize}
+    \item \textbf{Método del codo:} Se analizó la inercia (suma de distancias cuadradas intra-cluster) para cada valor de \(k\), observando el punto donde la disminución de la inercia se vuelve marginal.
+    \item \textbf{Coeficiente de Silhouette:} Se calculó el coeficiente de Silhouette para cada \(k\), seleccionando el valor que maximiza esta métrica.
+\end{itemize}
+
+El modelo final se configuró con los parámetros \texttt{n\_init = 10} y \texttt{random\_state = 42} para garantizar la reproducibilidad de los resultados.
+
+\subsubsection{DBSCAN}
+
+El algoritmo DBSCAN (Density-Based Spatial Clustering of Applications with Noise) agrupa puntos basándose en la densidad de vecinos. A diferencia de K-Means, no requiere especificar el número de clusters a priori y permite identificar puntos atípicos que no pertenecen a ningún grupo.
+
+\paragraph{Reducción de dimensionalidad.}
+Previo a la aplicación de DBSCAN, se aplicó Análisis de Componentes Principales (PCA) sobre los datos estandarizados para reducir las 11 dimensiones originales a 3 componentes, conservando aproximadamente el 48\% de la varianza total. Esto mejora la eficiencia computacional del algoritmo (cuya complejidad es \(O(n^2)\) en el peor caso) sin perder la estructura principal de los datos.
+
+\paragraph{Selección de hiperparámetros.}
+El parámetro \texttt{eps} (radio de vecindad) se determinó mediante el método de la gráfica k-distance, que ordena las distancias al quinto vecino más cercano de cada punto. El valor seleccionado fue \texttt{eps = 1.1}, correspondiente al punto de inflexión (codo) de la curva. El parámetro \texttt{min\_samples} se fijó en 5, estableciendo el número mínimo de puntos requerido para formar una región densa.
+
+\paragraph{Implementación.}
+La implementación se realizó con la librería \texttt{scikit-learn}, utilizando el algoritmo \texttt{ball\_tree} para optimizar la búsqueda de vecinos.
+
+\subsubsection{Métricas de evaluación}
+
+La comparación entre algoritmos se realizará mediante el \textbf{coeficiente de Silhouette} \cite{rousseeuw1987silhouettes}, que mide la cohesión intra-cluster y la separación inter-cluster en un rango de \([-1, 1]\), donde valores cercanos a 1 indican clusters bien definidos. Como métrica complementaria se empleará el \textbf{índice de Davies-Bouldin} \cite{davies1979cluster}, donde valores menores reflejan mejor separación entre grupos.

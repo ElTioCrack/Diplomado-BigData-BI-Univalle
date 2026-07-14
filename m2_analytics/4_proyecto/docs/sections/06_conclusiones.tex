@@ -1,0 +1,93 @@
+% ========== sections/06_conclusiones.tex ==========
+\section{Conclusiones}
+
+\subsection{Respuesta a las preguntas de investigación}
+
+A continuación, se responden las preguntas de investigación planteadas en la introducción, con base en los resultados obtenidos.
+
+\textbf{Pregunta 1: ¿Cuántos grupos naturales de canciones existen en el Top 50 mundial de Spotify?}
+
+Los resultados de ambos algoritmos muestran que la música popular mundial no es homogénea. El algoritmo K-Means identificó 2 grupos naturales, mientras que DBSCAN identificó 8 grupos más 12 puntos de ruido. La diferencia se debe a la naturaleza de cada algoritmo: K-Means tiende a agrupar los datos en pocos clusters de gran tamaño, mientras que DBSCAN, al ser basado en densidad, es capaz de detectar clusters más pequeños y específicos. Considerando ambos enfoques, se puede concluir que existen al menos 2 grandes perfiles musicales dominantes en el Top 50, con múltiples subperfiles de nicho.
+
+\textbf{Pregunta 2: ¿Es posible asignar nombres descriptivos a los clusters basándose en sus valores promedio de danceability, energy y valence?}
+
+Sí, es posible. Utilizando exclusivamente las variables danceability, energy y valence, se distinguen claramente los diferentes perfiles musicales. Para K-Means se identificaron dos perfiles: \enquote{Bailable, energética y positiva} (alta danceability, alta energy, alta valence) y \enquote{Mixta / equilibrada} (valores moderados en todas las dimensiones). Para DBSCAN se identificaron perfiles como \enquote{Popular comercial}, \enquote{Instrumental introspectivo}, \enquote{Ambiental extremo}, \enquote{Balada lenta}, \enquote{Rap hablado}, \enquote{Folk alegre}, \enquote{Estudio y concentración} e \enquote{Infantil y lullabies}.
+
+\textbf{Pregunta 3: ¿Qué combinación de valores caracteriza a cada perfil musical?}
+
+Las combinaciones características para K-Means son:
+
+\begin{itemize}
+    \item \textbf{Cluster 1 (Bailable, energética y positiva):} danceability 0.699, energy 0.743, valence 0.611.
+    \item \textbf{Cluster 0 (Mixta / equilibrada):} danceability 0.592, energy 0.491, valence 0.382.
+\end{itemize}
+
+Para DBSCAN, las combinaciones más representativas son:
+
+\begin{itemize}
+    \item \textbf{Popular comercial:} danceability 0.678, energy 0.652, valence 0.549.
+    \item \textbf{Folk alegre:} danceability 0.531, energy 0.038, valence 0.800.
+    \item \textbf{Balada lenta:} danceability 0.094, energy 0.002, valence 0.068.
+\end{itemize}
+
+\textbf{Pregunta 4: ¿Qué algoritmo de clustering produce los mejores resultados en términos de coeficiente de Silhouette?}
+
+El algoritmo DBSCAN obtuvo un coeficiente de Silhouette de 0.516, superior al de K-Means (0.210). Esto indica que DBSCAN produce clusters mejor definidos y más separados entre sí. Sin embargo, K-Means tiene la ventaja de no generar puntos de ruido (0\% de datos no asignados) y ser más simple de interpretar. La elección del algoritmo depende del objetivo: DBSCAN es preferible si se busca identificar clusters de nicho y detectar datos atípicos, mientras que K-Means es más adecuado para una segmentación rápida y general del mercado musical.
+
+\subsection{Aportes y hallazgos principales}
+
+Los principales aportes de este trabajo son los siguientes:
+
+\begin{enumerate}
+    \item Se ha demostrado que es posible segmentar los grandes éxitos de Spotify en perfiles acústicos diferenciados, identificando al menos 2 grandes grupos y múltiples subgrupos de nicho.
+    
+    \item Se ha propuesto un sistema de nomenclatura semántica para los clusters (Bailable, energética y positiva; Popular comercial; Folk alegre; Instrumental introspectivo, etc.), facilitando la comunicación de resultados a audiencias no técnicas.
+    
+    \item Se ha establecido una comparativa cuantitativa entre K-Means y DBSCAN, evidenciando que DBSCAN ofrece mejor separación de clusters (Silhouette 0.516 vs 0.210), mientras que K-Means es más rápido de ejecutar y más simple de interpretar.
+    
+    \item Se han formulado caracterizaciones acústicas para la industria musical, especificando qué combinaciones de danceability, energy y valence caracterizan a cada perfil de éxito.
+    
+    \item Se ha diferenciado explícitamente este trabajo de análisis públicos existentes en Kaggle, destacando el enfoque en clustering no supervisado, la comparación de dos algoritmos (K-Means y DBSCAN) y la asignación de nombres interpretables a los clusters.
+\end{enumerate}
+
+\subsection{Limitaciones y trabajo futuro}
+
+\textbf{Limitaciones del estudio:}
+
+\begin{itemize}
+    \item El análisis se limita a canciones que ya alcanzaron el Top 50, introduciendo un sesgo de selección. No se analizan canciones que no lograron éxito.
+    
+    \item El coeficiente de Silhouette de DBSCAN (0.516) indica una calidad de clustering buena pero no excelente. Existe cierta superposición entre clusters.
+    
+    \item El muestreo a 100.000 canciones, aunque necesario por costo computacional, podría haber excluido algunos patrones presentes en el dataset completo de 2.1 millones de registros.
+    
+    \item No se incluyeron variables contextuales como género musical, año de lanzamiento o país de origen, que podrían enriquecer la segmentación.
+\end{itemize}
+
+\textbf{Trabajo futuro:}
+
+\begin{itemize}
+    \item Aplicar técnicas de reducción de dimensionalidad alternativas (t-SNE, UMAP) para visualizar mejor la separación entre clusters.
+    
+    \item Incorporar variables temporales para analizar cómo evolucionan los perfiles acústicos de los éxitos a lo largo del tiempo.
+    
+    \item Entrenar un clasificador supervisado que, dadas las características acústicas de una canción nueva, prediga su perfil cluster.
+    
+    \item Repetir el análisis por país o región para identificar diferencias culturales en los perfiles de éxito musical.
+\end{itemize}
+
+\subsection{Aprendizajes del proceso}
+
+La realización de este proyecto ha permitido consolidar aprendizajes fundamentales en el ciclo de vida de un proyecto de Ciencia de Datos:
+
+\begin{itemize}
+    \item \textbf{Importancia del preprocesamiento:} Se confirmó que el preprocesamiento y la limpieza de datos consumen una parte significativa del tiempo del proyecto, siendo una fase crítica para obtener resultados confiables.
+    
+    \item \textbf{No hay algoritmo universalmente mejor:} La elección del algoritmo de clustering depende del objetivo del análisis (segmentación general vs. detección de nichos) y de las características del dataset.
+    
+    \item \textbf{Valor de la interpretabilidad:} La asignación de nombres descriptivos a los clusters es tan importante como los resultados numéricos, especialmente para comunicar hallazgos a audiencias no técnicas.
+    
+    \item \textbf{Trabajo colaborativo:} Se confirmó la importancia del trabajo en equipo con control de versiones (GitHub) y de una estructura modular del proyecto (datos, notebooks, documentación) para facilitar la integración de contribuciones individuales.
+    
+    \item \textbf{Iteración constante:} El proceso de análisis de datos es inherentemente iterativo; los resultados iniciales guían nuevas preguntas y refinamientos del modelo.
+\end{itemize}

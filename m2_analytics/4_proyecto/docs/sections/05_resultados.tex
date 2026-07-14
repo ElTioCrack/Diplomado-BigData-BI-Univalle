@@ -1,0 +1,188 @@
+% ========== sections/05_resultados.tex ==========
+\section{Resultados}
+
+A continuación, se presentan los resultados obtenidos tras la aplicación de los algoritmos de clustering no supervisado sobre el conjunto de datos de Spotify. Para cada algoritmo, se reportan las métricas de evaluación y la caracterización de los clusters encontrados.
+
+\subsection{K-Means}
+
+El algoritmo K-Means se ejecutó sobre una muestra de 100.000 canciones previamente estandarizadas.
+
+\subsubsection{Determinación del número óptimo de clusters}
+
+Para determinar el valor óptimo de \(k\), se evaluaron valores entre 2 y 10 utilizando dos criterios complementarios: el método del codo (basado en la inercia) y el coeficiente de Silhouette.
+
+El método del codo mostró una disminución significativa de la inercia hasta \(k = 4\), a partir del cual la mejora se vuelve marginal. Por su parte, el coeficiente de Silhouette alcanzó su valor máximo en \(k = 2\), con un valor de 0.2096. Considerando ambos criterios y la interpretabilidad de los resultados, se seleccionó \(k = 2\) como número óptimo de clusters.
+
+\subsubsection{Métricas de evaluación}
+
+La Tabla \ref{tab:metricas_kmeans} presenta las métricas obtenidas para el modelo K-Means con \(k = 2\). El coeficiente de Silhouette de 0.2096 indica una estructura de clusters aceptable, aunque con cierta superposición entre grupos. El índice de Davies-Bouldin (1.9563) y el índice de Calinski-Harabasz (782.36) complementan la evaluación.
+
+\begin{table}[htbp]
+\caption{Métricas de evaluación - K-Means}
+\centering
+\small
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Métrica} & \textbf{Valor} \\
+\hline
+Número de clusters (\(k\)) & 2 \\
+Coeficiente de Silhouette & 0.2096 \\
+Índice de Davies-Bouldin & 1.9563 \\
+Índice de Calinski-Harabasz & 782.36 \\
+Tiempo de ejecución & 3.16 segundos \\
+\hline
+\end{tabular}
+\label{tab:metricas_kmeans}
+\end{table}
+
+\subsubsection{Clusters encontrados}
+
+K-Means identificó 2 clusters, sin puntos de ruido (todos los datos son asignados a algún grupo). La Tabla \ref{tab:clusters_kmeans} presenta los valores promedio de las variables acústicas para cada cluster.
+
+\begin{table}[htbp]
+\caption{Valores promedio por cluster - K-Means}
+\centering
+\small
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Variable} & \textbf{Cluster 0} & \textbf{Cluster 1} \\
+\hline
+Danceability & 0.592 & 0.699 \\
+Energy & 0.491 & 0.743 \\
+Valence & 0.382 & 0.611 \\
+Acousticness & 0.482 & 0.172 \\
+Instrumentalness & 0.045 & 0.010 \\
+Liveness & 0.160 & 0.191 \\
+Speechiness & 0.095 & 0.111 \\
+Tempo (BPM) & 119.03 & 124.61 \\
+Loudness (dB) & -9.189 & -5.726 \\
+Duration (ms) & - & - \\
+Mode & - & - \\
+\hline
+\end{tabular}
+\label{tab:clusters_kmeans}
+\end{table}
+
+\subsubsection{Interpretación de los clusters}
+
+A partir de los valores promedio presentados, se asignaron nombres descriptivos a cada cluster:
+
+\begin{itemize}
+    \item \textbf{Cluster 1 (Bailable, energética y positiva):} Alta bailabilidad (0.699), alta energía (0.743) y positividad alta (0.611). Corresponde al perfil típico de canciones alegres, enérgicas y orientadas al baile.
+    
+    \item \textbf{Cluster 0 (Mixta / equilibrada):} Valores moderados en todas las dimensiones, con menor energía (0.491) y menor positividad (0.382). Representa un perfil musical más sobrio, con mayor acusticidad (0.482) y volumen más bajo.
+\end{itemize}
+
+\subsection{DBSCAN}
+
+El algoritmo DBSCAN se ejecutó sobre una muestra de 100.000 canciones previamente estandarizadas. Los parámetros utilizados fueron \texttt{eps = 1.1} y \texttt{min\_samples = 5}, seleccionados mediante el método de la gráfica k-distance.
+
+\subsubsection{Métricas de evaluación}
+
+La Tabla \ref{tab:metricas_dbscan} presenta las métricas utilizadas para evaluar la calidad del clustering. El coeficiente de Silhouette alcanzó un valor de 0.516, lo que indica una estructura de clusters buena, con puntos bien ubicados dentro de sus grupos y razonablemente separados de los demás. El índice de Davies-Bouldin (1.160) se sitúa en el rango aceptable, confirmando que los clusters mantienen una separación adecuada. El índice de Calinski-Harabasz (1370.36) corrobora una buena cohesión interna y separación global entre los grupos.
+
+\begin{table}[htbp]
+\caption{Métricas de evaluación - DBSCAN}
+\centering
+\small
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Métrica} & \textbf{Valor} \\
+\hline
+Coeficiente de Silhouette & 0.516 \\
+Índice de Davies-Bouldin & 1.160 \\
+Índice de Calinski-Harabasz & 1370.36 \\
+\hline
+\end{tabular}
+\label{tab:metricas_dbscan}
+\end{table}
+
+\subsubsection{Clusters encontrados}
+
+DBSCAN identificó un total de \textbf{8 clusters} y \textbf{12 puntos de ruido} (canciones atípicas que no fueron asignadas a ningún grupo). El cluster de mayor tamaño (cluster 0) concentra 99.377 canciones, equivalente al 99.4\% de la muestra. Los Cuadros \ref{tab:clusters_dbscan_1} y \ref{tab:clusters_dbscan_2} resumen los valores promedio de las variables acústicas para cada uno de los 8 clusters encontrados.
+
+\begin{table}[htbp]
+\caption{Valores promedio por cluster - DBSCAN (parte 1)}
+\centering
+\small
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Cluster} & \textbf{Danceability} & \textbf{Energy} & \textbf{Valence} & \textbf{Tamaño} \\
+\hline
+0 & 0.678 & 0.652 & 0.549 & 99,377 \\
+1 & 0.145 & 0.393 & 0.062 & 295 \\
+2 & 0.168 & 0.003 & 0.219 & 152 \\
+3 & 0.094 & 0.002 & 0.068 & 16 \\
+4 & 0.458 & 0.297 & 0.357 & 90 \\
+5 & 0.531 & 0.038 & 0.800 & 7 \\
+6 & 0.270 & 0.277 & 0.082 & 36 \\
+7 & 0.418 & 0.106 & 0.800 & 15 \\
+\hline
+\end{tabular}
+\label{tab:clusters_dbscan_1}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Valores promedio por cluster - DBSCAN (parte 2)}
+\centering
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Cluster} & \textbf{Acousticness} & \textbf{Instrumentalness} & \textbf{Tamaño} \\
+\hline
+0 & 0.274 & 0.016 & 99,377 \\
+1 & 0.583 & 0.537 & 295 \\
+2 & 0.192 & 0.582 & 152 \\
+3 & 0.247 & 0.000 & 16 \\
+4 & 0.866 & 0.284 & 90 \\
+5 & 0.894 & 0.019 & 7 \\
+6 & 0.018 & 0.395 & 36 \\
+7 & 0.994 & 0.029 & 15 \\
+\hline
+\end{tabular}
+\label{tab:clusters_dbscan_2}
+\end{table}
+
+\subsubsection{Interpretación de los clusters}
+
+A partir de los valores promedio presentados, se asignaron nombres descriptivos a cada cluster:
+
+\begin{itemize}
+    \item \textbf{Cluster 0 (Popular comercial):} Alta bailabilidad (0.678), energía media-alta (0.652) y positividad media (0.549). Corresponde al perfil típico de los grandes éxitos en plataformas de streaming.
+    
+    \item \textbf{Cluster 1 (Instrumental introspectivo):} Baja bailabilidad (0.145), baja positividad (0.062) y alta instrumentalidad (0.537). Representa composiciones instrumentales de carácter emocional.
+    
+    \item \textbf{Cluster 2 (Ambiental extremo):} Energía prácticamente nula (0.003) y volumen extremadamente bajo. Música de fondo o ambiental.
+    
+    \item \textbf{Cluster 3 (Balada lenta):} Energía casi inexistente (0.002) y positividad muy baja (0.068). Baladas nostálgicas o tristes.
+    
+    \item \textbf{Cluster 4 (Rap hablado):} Alto contenido de voz hablada (speechiness: 0.470) y alta acusticidad (0.866). Predominio de voz sobre melodía.
+    
+    \item \textbf{Cluster 5 (Folk alegre):} Positividad muy alta (0.800), energía muy baja (0.038) y alta acusticidad (0.894). Música alegre pero relajada, de carácter acústico.
+    
+    \item \textbf{Cluster 6 (Estudio y concentración):} Carácter instrumental (0.395), energía controlada (0.277). Música de fondo para tareas de concentración.
+    
+    \item \textbf{Cluster 7 (Infantil y lullabies):} Positividad muy alta (0.800) y acusticidad casi total (0.994). Similar a canciones de cuna o música infantil.
+\end{itemize}
+
+\subsection{Comparativa entre algoritmos}
+
+La Tabla \ref{tab:comparativa} resume los resultados obtenidos por ambos algoritmos. DBSCAN supera a K-Means en el coeficiente de Silhouette (0.516 vs 0.210), lo que indica una mejor definición de los clusters. Sin embargo, K-Means es significativamente más rápido (3.16 segundos vs tiempo no comparable por las diferencias en preprocesamiento) y produce una segmentación más simple de interpretar.
+
+\begin{table}[htbp]
+\caption{Comparativa de algoritmos}
+\centering
+\small
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Métrica} & \textbf{K-Means} & \textbf{DBSCAN} \\
+\hline
+Número de clusters & 2 & 8 \\
+Coeficiente de Silhouette & 0.210 & 0.516 \\
+Índice de Davies-Bouldin & 1.956 & 1.160 \\
+Porcentaje de ruido & 0\% & 0.012\% \\
+Tiempo de ejecución (seg) & 3.16 & — \\
+\hline
+\end{tabular}
+\label{tab:comparativa}
+\end{table}
