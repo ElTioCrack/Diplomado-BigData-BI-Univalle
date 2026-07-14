@@ -1,0 +1,11 @@
+ID_Producto;Nombre_Medicamento;Categoría;Laboratorio;Precio_Unitario;Stock
+P001;Paracetamol 500mg;Analgésico;Bayer;45,50;150
+P002;Ibuprofeno 400mg;Antiinflamatorio;Pfizer;65,00;200
+P003;Amoxicilina 500mg;Antibiótico;Sanofi;120,00;80
+P004;Omeprazol 20mg;Gastroenterología;AstraZeneca;85,00;120
+P005;Loratadina 10mg;Antialérgico;Novartis;55,00;180
+P006;Metformina 850mg;Antidiabético;Merck;95,00;100
+P007;Losartán 50mg;Antihipertensivo;Teva;110,00;90
+P008;Aspirina 100mg;Analgésico;Bayer;35,00;250
+P009;Diclofenaco 50mg;Antiinflamatorio;Novartis;48,00;175
+P010;Ranitidina 150mg;Gastroenterología;Pfizer;72,00;130
