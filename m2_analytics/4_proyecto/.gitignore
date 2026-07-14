@@ -1,0 +1,31 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# LaTeX - Archivos temporales (NO se suben a Git)
+*.aux
+*.fdb_latexmk
+*.fls
+*.gz
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.blg
+*.bbl
+*.lot
+*.lof
+*.idx
+*.ind
+*.ilg
+
+# LaTeX
+*.pdf
+*.bcf
+*.run.xml
+
+# Editor
+.vscode/
+.idea/
+*.swp
