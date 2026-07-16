@@ -1,0 +1,15 @@
+Nombre de la columna,Tipo,Descripción
+ID_DigitalCustomer,uint64,"Identificador único del visitante. Un mismo usuario puede aparecer en varias sesiones (visitId)."
+ID_WebVisit,int64,"Identificador único de la sesión de navegación. Cada registro corresponde a una sesión."
+Dt_WebVisit,Fecha,"Fecha en la que ocurrió la sesión (formato YYYY-MM-DD)."
+Traffic_Source,Texto,"Origen del tráfico (Source) desde el cual llegó el usuario al sitio web (Google, Direct, Referral, etc.)."
+Traffic_Medium,Texto,"Medio de adquisición (Medium) asociado al origen del tráfico (organic, cpc, referral, none, etc.)."
+Device_Type,Texto,"Tipo de dispositivo utilizado durante la sesión (Desktop, Mobile o Tablet)."
+NumPageViews,float,Número total de páginas visualizadas durante la sesión. Puede tomar valores altos cuando el usuario navega intensamente (máximo observado: 466)..
+Bounce_Flag,int,"Indicador de rebote. Es la única variable binaria del conjunto: 1 = sesión con rebote, 0 = sesión sin rebote."
+Viewed_Product,int,"Cantidad de eventos de visualización de productos registrados durante la sesión. Un usuario puede visualizar múltiples productos. No representa únicamente si hubo o no visualización."
+Added_To_Cart,int,"Cantidad de eventos ""Agregar al carrito"" registrados durante la sesión. Un usuario puede añadir varios productos o realizar múltiples acciones de agregado."
+Started_Checkout,int,"Cantidad de eventos de inicio del proceso de checkout registrados durante la sesión. Puede ser mayor que uno cuando existen múltiples intentos o procesos iniciados."
+Purchase_Completed,int,"Cantidad de eventos de compra (purchase) registrados durante la sesión. Una misma sesión puede registrar varios eventos de compra."
+Revenue,float,"Ingreso (Revenue) generado durante la sesión como resultado de las transacciones. Su valor es acumulado por sesión."
+NumTransactions,int,"Contador de transacciones de comercio electrónico registradas durante la sesión. Una sesión puede contener varias transacciones/productos."
