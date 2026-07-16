@@ -1,0 +1,78 @@
+% ===================================================================
+% 06_evaluacion.tex
+% Sección 6: Evaluación de Modelos
+% ===================================================================
+
+\begin{frame}{Evaluación de Modelos - Comparativa}
+    \input{assets/tables/model_comparison.tex}
+    
+    \begin{alertblock}{Criterio de Decisión de Negocio}
+        \begin{itemize}
+            \item \highlight{Recall (Fuga)} es la métrica prioritaria
+            \item Costo de FN (clientes perdidos) $>$ Costo de FP (campañas preventivas)
+            \item \textbf{Regresión Logística}: mejor recall (0.559) y AUC cercano al mejor modelo, además de ser más rápida y más interpretable
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Evaluación de Modelos - Validación Cruzada}
+    \input{assets/tables/cv_results.tex}
+    
+    \begin{block}{Análisis de Estabilidad}
+        \begin{itemize}
+            \item Ambos modelos muestran \highlight{baja varianza} (std $<$ 0.02)
+            \item Resultados consistentes entre folds
+            \item Robustez del modelo seleccionado
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Evaluación de Modelos - Curva ROC}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\linewidth]{roc_curve.png}
+        \caption{Curva ROC comparativa de modelos}
+    \end{figure}
+    
+    \begin{columns}[t]
+        \column{0.5\linewidth}
+        \textbf{Regresión Logística}
+        \begin{itemize}
+            \item AUC: 0.8421
+            \item Mejor balance
+        \end{itemize}
+        
+        \column{0.5\linewidth}
+        \textbf{Random Forest}
+        \begin{itemize}
+            \item AUC: 0.8393
+            \item Similar performance
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Evaluación de Modelos - Matrices de Confusión}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.9\linewidth]{confusion_matrix_lr.png}
+            \caption{Matriz de Confusión - Regresión Logística}
+        \end{figure}
+        
+        \column{0.5\linewidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.9\linewidth]{confusion_matrix_rf.png}
+            \caption{Matriz de Confusión - Random Forest}
+        \end{figure}
+    \end{columns}
+    
+    \begin{metricblock}{Interpretación de Resultados}
+        \begin{itemize}
+            \item \textbf{Regresión Logística}: Mejor identificación de fugas (Recall: 0.559)
+            \item \textbf{Random Forest}: Mayor precisión general (Accuracy: 0.788)
+            \item \textbf{Decisión}: Priorizar recall sobre precisión
+        \end{itemize}
+    \end{metricblock}
+\end{frame}

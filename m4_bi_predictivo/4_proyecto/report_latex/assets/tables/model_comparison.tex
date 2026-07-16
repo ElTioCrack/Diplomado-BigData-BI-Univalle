@@ -1,0 +1,18 @@
+% ===================================================================
+% assets/tables/model_comparison.tex
+% Tabla comparativa de modelos
+% ===================================================================
+
+\begin{table}[h]
+    \centering
+    \caption{Comparativa de modelos de clasificación}
+    \begin{tabular}{L{4cm}|C{1.8cm}|C{1.8cm}|C{2.2cm}|C{1.8cm}}
+        \toprule
+        \textbf{Modelo} & \textbf{Accuracy} & \textbf{ROC-AUC} & \textbf{Recall (Fuga)} & \textbf{Tiempo (s)} \\
+        \midrule
+        \rowcolor{primary!10}
+        \textbf{Regresión Logística} & 0.8055 & 0.8421 & \textbf{0.559} & 0.026 \\
+        Random Forest & 0.7878 & 0.8393 & 0.404 & 8.097 \\
+        \bottomrule
+    \end{tabular}
+\end{table}

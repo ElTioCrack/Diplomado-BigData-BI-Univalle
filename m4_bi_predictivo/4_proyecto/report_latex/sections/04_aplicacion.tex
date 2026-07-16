@@ -1,0 +1,93 @@
+% ===================================================================
+% 04_aplicacion.tex
+% Sección 4: Aplicación del Módulo
+% ===================================================================
+
+\begin{frame}{Aplicación del Módulo - Herramientas y Tecnologías}
+    \begin{columns}[t]
+        \column{0.5\linewidth}
+        \textbf{Herramientas Utilizadas}
+        \begin{description}
+            \item[Python 3.8] Lenguaje de programación
+            \item[Pandas] ETL y manipulación de datos
+            \item[Seaborn/Math] Visualización y análisis
+            \item[scikit-learn] Modelado predictivo
+            \item[Jupyter] Desarrollo interactivo
+        \end{description}
+        
+        \column{0.5\linewidth}
+        \begin{block}{Datos del Proyecto}
+            \begin{itemize}
+                \item Dataset: \datasetname
+                \item Registros: 7043
+                \item Variables tras procesamiento: 31
+                \item Target: Churn (0 = No, 1 = Sí)
+                \item Fuente: Kaggle
+            \end{itemize}
+        \end{block}
+    \end{columns}
+    
+    \vsp
+    \begin{exampleblock}{Variables Principales}
+        \begin{columns}
+            \column{0.33\linewidth}
+            \textbf{Demográficas}
+            \begin{itemize}
+                \item Edad
+                \item Género
+                \item Estado civil
+                \item Dependientes
+            \end{itemize}
+            \column{0.33\linewidth}
+            \textbf{Servicios}
+            \begin{itemize}
+                \item Teléfono
+                \item Internet
+                \item TV
+                \item Seguridad
+            \end{itemize}
+            \column{0.33\linewidth}
+            \textbf{Financieras}
+            \begin{itemize}
+                \item Cargos mensuales
+                \item Cargos totales
+                \item Método de pago
+                \item Contrato
+            \end{itemize}
+        \end{columns}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Aplicación del Módulo - ETL y Análisis Exploratorio}
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}[node distance=1.5cm, auto]
+            % Etapas del proceso
+            \node[rectangle, draw, fill=primary!20, minimum width=2.5cm, minimum height=0.8cm] (extrac) {Extracción};
+            \node[rectangle, draw, fill=primary!20, right of=extrac, node distance=3cm, minimum width=2.5cm, minimum height=0.8cm] (clean) {Limpieza};
+            \node[rectangle, draw, fill=primary!20, right of=clean, node distance=3cm, minimum width=2.5cm, minimum height=0.8cm] (transform) {Transformación};
+            \node[rectangle, draw, fill=accent!20, right of=transform, node distance=3cm, minimum width=2.5cm, minimum height=0.8cm] (eda) {EDA};
+            
+            % Flechas
+            \draw[->, thick, primary] (extrac) -- (clean);
+            \draw[->, thick, primary] (clean) -- (transform);
+            \draw[->, thick, accent] (transform) -- (eda);
+            
+            % Etiquetas
+            \node[above of=extrac, node distance=0.5cm] {Datos crudos};
+            \node[above of=clean, node distance=0.5cm] {Valores nulos};
+            \node[above of=transform, node distance=0.5cm] {Codificación};
+            \node[above of=eda, node distance=0.5cm] {Análisis};
+        \end{tikzpicture}
+        \caption{Flujo de procesamiento de datos}
+    \end{figure}
+    
+    \begin{block}{Patrones Identificados}
+        \begin{itemize}
+            \item Contratos mes a mes → Mayor fuga
+            \item Baja antigüedad → Mayor fuga
+            \item Fibra óptica y cargos altos → Mayor propensión
+            \item Ausencia de servicios adicionales → Mayor fuga
+        \end{itemize}
+    \end{block}
+\end{frame}

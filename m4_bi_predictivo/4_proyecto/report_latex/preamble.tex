@@ -1,0 +1,184 @@
+% ===================================================================
+% preamble.tex
+% Configuraciones globales, paquetes y comandos personalizados
+% ===================================================================
+
+% ===================================================================
+% PAQUETES Y CONFIGURACIONES DE IDIOMA
+% ===================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{siunitx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{shapes,arrows,positioning,fit,backgrounds}
+
+% ===================================================================
+% CONFIGURACIONES DE BEAMER
+% ===================================================================
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Configuración de colores personalizados
+\definecolor{primary}{RGB}{0, 51, 102}      % Azul institucional
+\definecolor{secondary}{RGB}{184, 1, 68}    % Rojo corporativo
+\definecolor{accent}{RGB}{46, 134, 171}     % Azul acento
+\definecolor{success}{RGB}{46, 204, 113}    % Verde éxito
+\definecolor{warning}{RGB}{241, 196, 15}    % Amarillo advertencia
+\definecolor{danger}{RGB}{231, 76, 60}      % Rojo peligro
+
+% Configuración del tema de colores
+\setbeamercolor{title}{fg=white, bg=primary}
+\setbeamercolor{frametitle}{fg=white, bg=primary}
+\setbeamercolor{structure}{fg=primary}
+
+% Personalización de bloques
+\setbeamercolor{block title}{bg=primary, fg=white}
+\setbeamercolor{block body}{bg=primary!10}
+
+\setbeamercolor{block title example}{bg=success, fg=white}
+\setbeamercolor{block body example}{bg=success!10}
+
+\setbeamercolor{block title alerted}{bg=danger, fg=white}
+\setbeamercolor{block body alerted}{bg=danger!10}
+
+% Configuración de la tabla de contenidos
+\setbeamertemplate{section in toc}{%
+    \hspace{0.5em}%
+    \inserttocsectionnumber.~\inserttocsection%
+}
+
+% Configuración de los footers
+\setbeamertemplate{footline}{%
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+            \usebeamerfont{author in head/foot}\insertshortauthor
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshorttitle
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+            \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+            \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+        \end{beamercolorbox}%
+    }%
+    \vskip0pt%
+}
+
+% ===================================================================
+% COMANDOS PERSONALIZADOS
+% ===================================================================
+
+% Variables del proyecto
+\newcommand{\churnrate}{26.5\%}
+\newcommand{\datasetname}{Telco Customer Churn}
+\newcommand{\projecttitle}{Análisis Predictivo de Churn en Telecomunicaciones}
+\newcommand{\projectauthor}{Equipo de Business Intelligence}
+\newcommand{\projectdate}{\today}
+
+% Información de la presentación
+\title[\projecttitle]{\projecttitle}
+\subtitle{Presentación de Resultados y Propuesta de Acción}
+\author[\projectauthor]{\projectauthor}
+\institute[Telecom Corp]{
+    \textbf{Telecom Corporation S.A.} \\
+    \textit{Departamento de Business Intelligence}
+}
+\date{\projectdate}
+
+% ===================================================================
+% ENTORNOS PERSONALIZADOS
+% ===================================================================
+
+% Bloque de pregunta clave
+\newenvironment{questionblock}{%
+    \setbeamercolor{block title}{bg=secondary, fg=white}
+    \setbeamercolor{block body}{bg=secondary!10}
+    \begin{block}{\textbf{Pregunta Clave}}
+}{\end{block}}
+
+% Bloque de acción recomendada
+\newenvironment{actionblock}{%
+    \setbeamercolor{block title}{bg=primary, fg=white}
+    \setbeamercolor{block body}{bg=primary!10}
+    \begin{block}{\textbf{Acción Recomendada}}
+}{\end{block}}
+
+% Bloque de insight
+\newenvironment{insightblock}{%
+    \setbeamercolor{block title}{bg=accent, fg=white}
+    \setbeamercolor{block body}{bg=accent!10}
+    \begin{block}{\textbf{Insight Clave}}
+}{\end{block}}
+
+% Bloque de métrica
+\newenvironment{metricblock}{%
+    \setbeamercolor{block title}{bg=success, fg=white}
+    \setbeamercolor{block body}{bg=success!10}
+    \begin{block}{\textbf{Métrica}}
+}{\end{block}}
+
+% ===================================================================
+% CONFIGURACIONES DE GRÁFICOS Y FIGURAS
+% ===================================================================
+
+% Ruta de imágenes
+\graphicspath{{assets/images/}}
+
+% Configuración de tablas
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% ===================================================================
+% CONFIGURACIONES DE LISTADOS DE CÓDIGO
+% ===================================================================
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{primary}\bfseries,
+    commentstyle=\color{accent}\itshape,
+    stringstyle=\color{secondary},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!5},
+    tabsize=2
+}
+
+% ===================================================================
+% COMANDOS ÚTILES PARA PRESENTACIONES
+% ===================================================================
+
+% Resaltar texto
+\newcommand{\highlight}[1]{{\color{secondary}\textbf{#1}}}
+\newcommand{\highlightprimary}[1]{{\color{primary}\textbf{#1}}}
+\newcommand{\highlightaccent}[1]{{\color{accent}\textbf{#1}}}
+
+% Espaciado vertical
+\newcommand{\vsp}{\vspace{0.5cm}}
+\newcommand{\vspb}{\vspace{1cm}}
+
+% Indicador de progreso
+\newcommand{\progress}{%
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[primary!20] (current page.south west) rectangle (current page.south east);
+        \fill[primary] (current page.south west) rectangle ++(\insertframenumber/\inserttotalframenumber\paperwidth, 3pt);
+    \end{tikzpicture}%
+}

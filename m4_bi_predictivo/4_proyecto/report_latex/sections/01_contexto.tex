@@ -1,0 +1,79 @@
+% ===================================================================
+% 01_contexto.tex
+% Sección 1: Contexto Organizacional
+% ===================================================================
+
+\begin{frame}{Contexto Organizacional}
+    \begin{columns}[t]
+        \column{0.6\linewidth}
+        \begin{block}{Datos Generales}
+            \begin{itemize}
+                \item Empresa de telecomunicaciones con \highlight{presencia nacional}
+                \item Servicios: Telefonía, Internet (DSL/Fibra Óptica), Televisión, Paquetes
+                \item Clientes: Residenciales y pequeños negocios
+                \item Base de clientes: \highlight{> 7000} registros analizados
+            \end{itemize}
+        \end{block}
+        
+        \vsp
+        \begin{alertblock}{Desafío Principal}
+            Entorno de \highlight{alta competencia}, saturación del mercado y guerra de precios
+        \end{alertblock}
+        
+        \column{0.4\linewidth}
+        \begin{center}
+            \begin{tikzpicture}[scale=0.7]
+                % Logo corporativo simbólico
+                \node[rectangle, draw=primary, fill=primary!10, 
+                      minimum width=3cm, minimum height=3cm, 
+                      rounded corners=5pt,
+                      text width=2.5cm, align=center] {
+                    \textbf{TELECOM} \\
+                    \vspace{0.3cm}
+                    \textit{Corporation} \\
+                    \vspace{0.3cm}
+                    \textcolor{secondary}{\textbf{S.A.}}
+                };
+            \end{tikzpicture}
+        \end{center}
+    \end{columns}
+    
+    \vspb
+    \begin{center}
+        \textbf{Objetivo Estratégico:} Reducir la tasa de rotación de clientes
+    \end{center}
+\end{frame}
+
+\begin{frame}{Contexto Organizacional - Estructura del Negocio}
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}[node distance=1.2cm, auto, 
+            every node/.style={rectangle, rounded corners, minimum height=1cm, minimum width=2.5cm, align=center}]
+            
+            % Nodo principal
+            \node[draw, fill=primary!20, text width=3cm] (telecom) {Telecom Corp.};
+            
+            % Nodos de servicios
+            \node[draw, fill=accent!20, below left of=telecom, xshift=-2.5cm] (phone) {Telefonía};
+            \node[draw, fill=accent!20, below of=telecom, yshift=-0.5cm] (internet) {Internet};
+            \node[draw, fill=accent!20, below right of=telecom, xshift=2.5cm] (tv) {Televisión};
+            \node[draw, fill=accent!20, below right of=internet, xshift=2.5cm, yshift=-0.5cm] (packages) {Paquetes};
+            
+            % Flechas
+            \draw[->, thick] (telecom) -- (phone);
+            \draw[->, thick] (telecom) -- (internet);
+            \draw[->, thick] (telecom) -- (tv);
+            \draw[->, thick] (internet) -- (packages);
+            
+        \end{tikzpicture}
+        \caption{Modelo de negocio de la empresa de telecomunicaciones}
+    \end{figure}
+    
+    \begin{block}{Segmentos de Clientes}
+        \begin{itemize}
+            \item \textbf{Residencial:} 65\% de la base
+            \item \textbf{Pequños Negocios:} 25\% de la base
+            \item \textbf{Empresas:} 10\% de la base
+        \end{itemize}
+    \end{block}
+\end{frame}

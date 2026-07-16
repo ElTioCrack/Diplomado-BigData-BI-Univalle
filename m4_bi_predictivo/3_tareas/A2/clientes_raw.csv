@@ -1,0 +1,9 @@
+cliente_id,nombre_cliente,tipo_cliente,region,canal_preferido,fecha_registro
+1,Juan Pérez,Nuevo,Norte,Tienda,2024-11-15
+2,J. Pérez,Nuevo,Norte,Tienda,15/11/2024
+3,María López,Recurrente,Centro,Online,2024/12/01
+4,Carlos Ruiz,Mayorista,Sur,Tienda,01-12-2024
+5,Ana Torres,Recurrente,,Online,2025-01-10
+6,Luis García,Nuevo,Centro,Online,2025-01-11
+7,Lucia Perez,Recurrente,Norte,Tienda,2025-01-18
+8,Roberto Diaz,Mayorista,Sur,Online,2025-01-19

@@ -1,0 +1,120 @@
+% ===================================================================
+% main.tex
+% Archivo principal de la presentación Beamer
+% Análisis Predictivo de Churn en Telecomunicaciones
+% ===================================================================
+
+\documentclass[11pt, aspectratio=169]{beamer}
+
+% ===================================================================
+% PREÁMBULO: Configuraciones y paquetes
+% ===================================================================
+\input{preamble.tex}
+
+% ===================================================================
+% INICIO DEL DOCUMENTO
+% ===================================================================
+\begin{document}
+
+% -------------------------------------------------------------------
+% PORTADA
+% -------------------------------------------------------------------
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+% -------------------------------------------------------------------
+% ÍNDICE
+% -------------------------------------------------------------------
+\begin{frame}{Contenido}
+    \tableofcontents
+\end{frame}
+
+% ===================================================================
+% SECCIONES
+% ===================================================================
+
+% -------------------------------------------------------------------
+% SECCIÓN 1: Contexto Organizacional
+% -------------------------------------------------------------------
+\section{Contexto Organizacional}
+\input{sections/01_contexto.tex}
+
+% -------------------------------------------------------------------
+% SECCIÓN 2: Estrategia de la Organización
+% -------------------------------------------------------------------
+\section{Estrategia de la Organización}
+\input{sections/02_estrategia.tex}
+
+% -------------------------------------------------------------------
+% SECCIÓN 3: Planteamiento del Problema
+% -------------------------------------------------------------------
+\section{Planteamiento del Problema}
+\input{sections/03_problema.tex}
+
+% -------------------------------------------------------------------
+% SECCIÓN 4: Aplicación del Módulo
+% -------------------------------------------------------------------
+\section{Aplicación del Módulo}
+\input{sections/04_aplicacion.tex}
+
+% -------------------------------------------------------------------
+% SECCIÓN 5: Modelado y Elección del Modelo
+% -------------------------------------------------------------------
+\section{Modelado y Elección del Modelo}
+\input{sections/05_modelado.tex}
+
+% -------------------------------------------------------------------
+% SECCIÓN 6: Evaluación de Modelos
+% -------------------------------------------------------------------
+\section{Evaluación de Modelos}
+\input{sections/06_evaluacion.tex}
+
+% -------------------------------------------------------------------
+% SECCIÓN 7: Resultado Analítico
+% -------------------------------------------------------------------
+\section{Resultado Analítico}
+\input{sections/07_resultados.tex}
+
+% -------------------------------------------------------------------
+% SECCIÓN 8: Toma de Decisión / Acción
+% -------------------------------------------------------------------
+\section{Toma de Decisión y Acción}
+\input{sections/08_decision.tex}
+
+% -------------------------------------------------------------------
+% SECCIÓN 9: Impacto Esperado
+% -------------------------------------------------------------------
+\section{Impacto Esperado}
+\input{sections/09_impacto.tex}
+
+% ===================================================================
+% BIBLIOGRAFÍA
+% ===================================================================
+\begin{frame}[allowframebreaks]{Referencias}
+    \bibliography{bibliography}
+    \bibliographystyle{apalike}
+\end{frame}
+
+% ===================================================================
+% AGRADECIMIENTOS
+% ===================================================================
+\begin{frame}{¡Gracias!}
+    \centering
+    \vspace{1cm}
+    {\Huge \textbf{¿Preguntas?}}
+    
+    \vspace{1.5cm}
+    \begin{block}{Contacto}
+        \textbf{Equipo de Business Intelligence}
+        \begin{itemize}
+            \item Email: bi@telecom.com
+            \item \#ProyectoChurn
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+% ===================================================================
+% FIN DEL DOCUMENTO
+% ===================================================================
+\end{document}

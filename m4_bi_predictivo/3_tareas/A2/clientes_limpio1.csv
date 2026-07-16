@@ -1,0 +1,8 @@
+﻿cliente_id,nombre_cliente,tipo_cliente,region,canal_preferido,fecha_registro,nombre_normalizado,cliente_master
+1,Juan Pérez,Nuevo,Norte,Tienda,2024-11-15,juan perez,juan perez
+3,María López,Recurrente,Centro,Online,2024/12/01,maria lopez,maria lopez
+4,Carlos Ruiz,Mayorista,Sur,Tienda,01-12-2024,carlos ruiz,carlos ruiz
+5,Ana Torres,Recurrente,,Online,2025-01-10,ana torres,ana torres
+6,Luis García,Nuevo,Centro,Online,2025-01-11,luis garcia,luis garcia
+7,Lucia Perez,Recurrente,Norte,Tienda,2025-01-18,lucia perez,lucia perez
+8,Roberto Diaz,Mayorista,Sur,Online,2025-01-19,roberto diaz,roberto diaz

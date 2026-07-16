@@ -1,0 +1,87 @@
+% ===================================================================
+% 08_decision.tex
+% Sección 8: Toma de Decisión / Acción
+% ===================================================================
+
+\begin{frame}{Toma de Decisión / Acción - Estrategia}
+    \begin{columns}[t]
+        \column{0.5\linewidth}
+        \begin{block}{Decisión Estratégica}
+            \centering
+            Implementar \textbf{sistema de alerta temprana} para clientes en riesgo de fuga
+        \end{block}
+        
+        \begin{exampleblock}{Acción Concreta}
+            Campaña de retención automatizada en el \highlight{tercer mes} de contrato month-to-month
+        \end{exampleblock}
+        
+        \column{0.5\linewidth}
+        \begin{actionblock}{Plan de Acción}
+            \begin{enumerate}
+                \item Identificar clientes con probabilidad $>$ 0.5
+                \item Segmentar por perfil de riesgo
+                \item Activar campaña personalizada
+                \item Medir efectividad (Recall)
+            \end{enumerate}
+        \end{actionblock}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Toma de Decisión / Acción - Segmentación y Priorización}
+    \begin{columns}[t]
+        \column{0.5\linewidth}
+        \textbf{Sobre quién actuar}
+        \begin{itemize}
+            \item \highlight{Contrato Month-to-month}
+            \item Antigüedad $<$ 18 meses
+            \item Score de probabilidad $>$ 0.5
+            \item Cargos mensuales $>$ \$70
+        \end{itemize}
+        
+        \column{0.5\linewidth}
+        \textbf{Qué ofrecer}
+        \begin{itemize}
+            \item Descuento 10-15\% por upgrade a contrato anual
+            \item Paquete de servicios premium
+            \item Fidelización con beneficios adicionales
+        \end{itemize}
+    \end{columns}
+    
+    \vsp
+    \begin{block}{Priorización de Acciones}
+        \begin{enumerate}
+            \item \textbf{Alta prioridad}: Contract + Tenure $<$ 6 meses
+            \item \textbf{Media prioridad}: Contract + Tenure 6-18 meses
+            \item \textbf{Baja prioridad}: Contract + Tenure $>$ 18 meses
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Toma de Decisión / Acción - Implementación}
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}[node distance=1.2cm, auto]
+            % Etapas
+            \node[rectangle, draw, fill=primary!20, minimum width=2cm, minimum height=0.8cm] (monitor) {Monitorización};
+            \node[rectangle, draw, fill=accent!20, right of=monitor, node distance=3cm, minimum width=2cm, minimum height=0.8cm] (score) {Scoreo};
+            \node[rectangle, draw, fill=secondary!20, right of=score, node distance=3cm, minimum width=2cm, minimum height=0.8cm] (alert) {Alerta};
+            \node[rectangle, draw, fill=success!20, right of=alert, node distance=3cm, minimum width=2cm, minimum height=0.8cm] (action) {Acción};
+            
+            % Flechas
+            \draw[->, thick] (monitor) -- (score);
+            \draw[->, thick] (score) -- (alert);
+            \draw[->, thick] (alert) -- (action);
+            
+            % Retroalimentación
+            \draw[->, dashed, secondary] (action) to[out=180, in=0, looseness=2] (monitor);
+            
+            % Etiquetas
+            \node[below of=monitor, node distance=0.8cm, font=\tiny] {Datos cliente};
+            \node[below of=score, node distance=0.8cm, font=\tiny] {Modelo ML};
+            \node[below of=alert, node distance=0.8cm, font=\tiny] {Regla de negocio};
+            \node[below of=action, node distance=0.8cm, font=\tiny] {Campaña};
+            \node[below of=action, node distance=1.8cm, font=\tiny] {Feedback};
+        \end{tikzpicture}
+        \caption{Flujo de implementación del sistema de alerta temprana}
+    \end{figure}
+\end{frame}

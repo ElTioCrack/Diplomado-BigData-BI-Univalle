@@ -1,0 +1,71 @@
+% ===================================================================
+% 03_problema.tex
+% Sección 3: Planteamiento del Problema
+% ===================================================================
+
+\begin{frame}{Planteamiento del Problema}
+    \begin{columns}[t]
+        \column{0.5\linewidth}
+        \begin{block}{Problema de Negocio}
+            \centering
+            Alta tasa de fuga de clientes: \highlight{\churnrate} anual
+        \end{block}
+        
+        \vsp
+        \begin{questionblock}{Pregunta Concreta}
+            ¿Qué clientes tienen mayor probabilidad de fuga y \textbf{cuándo} debemos intervenir?
+        \end{questionblock}
+        
+        \column{0.5\linewidth}
+        \begin{exampleblock}{Requisitos de la Solución}
+            \begin{itemize}
+                \item \textbf{Accionable}: Activar campañas de retención en el momento óptimo
+                \item \textbf{Estratégico}: Priorizar clientes con contrato mes a mes y baja antigüedad
+                \item \textbf{Métrico}: Maximizar el \highlight{Recall} de la clase Fuga
+            \end{itemize}
+        \end{exampleblock}
+    \end{columns}
+    
+    \vsp
+    \begin{alertblock}{Consecuencias de No Actuar}
+        \begin{itemize}
+            \item Pérdida de ingresos: \highlight{-\$2.5M} anuales
+            \item Deterioro de la imagen de marca
+            \item Pérdida de ventaja competitiva
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Planteamiento del Problema - Impacto en el Negocio}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            % Datos
+            \begin{axis}[
+                width=10cm, height=6cm,
+                ybar,
+                bar width=0.5cm,
+                xlabel={Mes},
+                ylabel={Clientes perdidos},
+                xtick={1,2,3,4,5,6,7,8,9,10,11,12},
+                ymin=0, ymax=140,
+                title={Tendencia de Churn Mensual},
+                legend style={at={(0.5,-0.15)}, anchor=north, legend columns=2}
+            ]
+            \addplot[fill=secondary, draw=none] coordinates {
+                (1,85) (2,92) (3,78) (4,110) (5,95) 
+                (6,88) (7,120) (8,105) (9,98) (10,115) (11,102) (12,95)
+            };
+            \addplot[domain=1:12, thick, primary] {100};
+            \legend{Churn mensual, Promedio}
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    
+    \begin{block}{Datos Clave}
+        \begin{itemize}
+            \item Pérdida promedio: \highlight{100 clientes/mes}
+            \item 26.5\% de la base rota anualmente
+            \item Impacto en ingresos: \highlight{\$2.5M} anuales
+        \end{itemize}
+    \end{block}
+\end{frame}

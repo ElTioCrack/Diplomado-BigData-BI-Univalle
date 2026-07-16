@@ -1,0 +1,64 @@
+% ===================================================================
+% 07_resultados.tex
+% Sección 7: Resultado Analítico
+% ===================================================================
+
+\begin{frame}{Resultado Analítico - Top 5 Variables}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\linewidth]{feature_importance.png}
+        \caption{Top 5 variables más influyentes en la fuga de clientes}
+    \end{figure}
+    
+    \begin{insightblock}{Insights Clave}
+        \begin{itemize}
+            \item \highlight{tenure}, \textbf{TotalCharges} y \textbf{InternetService	extunderscore Fiber optic} aparecen entre las variables más influyentes
+            \item Clientes nuevos ($<$ 18 meses) tienen mayor riesgo de fuga
+            \item Clientes con fibra óptica, cargos altos y contratos flexibles requieren atención prioritaria
+            \item El método de pago por cheque también aparece como un indicador de riesgo relevante
+        \end{itemize}
+    \end{insightblock}
+\end{frame}
+
+\begin{frame}{Resultado Analítico - Distribución de Churn}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.9\linewidth]{churn_distribution.png}
+            \caption{Distribución de Churn por segmento}
+        \end{figure}
+        
+        \column{0.5\linewidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.9\linewidth]{tenure_churn_boxplot.png}
+            \caption{Antigüedad vs Churn}
+        \end{figure}
+    \end{columns}
+    
+    \begin{block}{Hallazgos Estadísticos}
+        \begin{itemize}
+            \item Tasa de churn: \highlight{26.5\%}
+            \item Mediana de tenure: 38 meses para clientes que permanecen vs 10 meses para los que abandonan
+            \item Contratos month-to-month: 42.7\% de fuga vs 11.3\% en contratos anuales y 2.8\% en contratos bianuales
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Resultado Analítico - Churn por Tipo de Contrato}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\linewidth]{churn_by_contract.png}
+        \caption{Tasa de fuga por tipo de contrato}
+    \end{figure}
+    
+    \begin{alertblock}{Hallazgo Crítico}
+        \begin{itemize}
+            \item Clientes con contrato \highlight{month-to-month}: 42.7\% de churn
+            \item Clientes con contrato anual: 10.2\% de churn
+            \item Clientes con contrato bi-anual: 2.8\% de churn
+            \item \textbf{Conclusión}: Foco en clientes con contratos flexibles
+        \end{itemize}
+    \end{alertblock}
+\end{frame}

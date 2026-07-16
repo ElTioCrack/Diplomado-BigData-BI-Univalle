@@ -1,0 +1,21 @@
+venta_id,fecha,canal,region,tipo_cliente,categoria,producto,cantidad,precio_unitario,descuento,importe_total
+1,2025-02-01,Tienda,Norte,Nuevo,Electrónica,Auriculares Pro,2,80,0.0,160.0
+2,2025-02-01,Online,Centro,Recurrente,Hogar,Licuadora X,1,120,0.0,120.0
+3,2025-02-02,Tienda,Sur,Mayorista,Hogar,Cafetera Plus,3,150,0.1,405.0
+4,2025-02-02,Online,Norte,Recurrente,Moda,Zapatillas Run,2,95,0.05,180.5
+5,2025-02-03,Online,,Nuevo,Electrónica,Tablet 8,1,220,0.0,220.0
+6,2025-02-03,Tienda,Centro,Recurrente,Moda,Chaqueta Urban,1,140,0.0,140.0
+7,2025-02-04,Online,Sur,Mayorista,Hogar,Licuadora X,4,120,0.1,432.0
+8,08/02/2025,Tienda,Norte,Nuevo,Moda,Zapatillas Run,1,95,0.0,95.0
+9,2025-02-06,Online,Norte,Recurrente,Electrónica,Auriculares Pro,3,80,0.05,228.0
+10,2025-02-06,Tienda,Centro,Recurrente,Hogar,Cafetera Plus,1,150,0.0,150.0
+11,2025-02-07,Online,Sur,Mayorista,Electrónica,Tablet 8,2,220,0.1,440.0
+12,2025-02-08,Tienda,Sur,Nuevo,Moda,Chaqueta Urban,2,140,0.0,280.0
+13,2025-02-09,Online,Centro,Recurrente,Hogar,Licuadora X,2,120,0.0,240.0
+14,2025-02-10,Tienda,Norte,Mayorista,Hogar,Cafetera Plus,2,150,0.1,270.0
+15,2025-02-11,Online,Norte,Nuevo,Moda,Zapatillas Run,3,95,0.05,270.75
+16,2025-02-12,Tienda,Centro,Recurrente,Electrónica,Tablet 8,1,220,0.0,220.0
+17,2025-02-13,Online,Sur,Mayorista,Moda,Chaqueta Urban,1,140,0.1,126.0
+18,2025-02-14,Tienda,Sur,Recurrente,Hogar,Licuadora X,2,120,0.0,240.0
+19,2025-02-15,Online,Centro,Nuevo,Electrónica,Auriculares Pro,2,80,0.05,152.0
+20,2025-02-16,Tienda,Norte,Recurrente,Moda,Zapatillas Run,2,95,0.0,190.0

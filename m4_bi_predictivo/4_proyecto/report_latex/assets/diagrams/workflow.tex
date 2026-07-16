@@ -1,0 +1,34 @@
+% ===================================================================
+% assets/diagrams/workflow.tex
+% Diagrama de flujo del proyecto
+% ===================================================================
+
+\begin{tikzpicture}[node distance=1.5cm, auto, 
+    every node/.style={rectangle, rounded corners, minimum height=1.2cm, minimum width=2.5cm, align=center, font=\small}]
+    
+    % Nodos del workflow
+    \node[draw, fill=primary!20] (etl) {ETL \\ Extracción y Limpieza};
+    \node[draw, fill=accent!20, right of=etl, node distance=3.5cm] (eda) {EDA \\ Análisis Exploratorio};
+    \node[draw, fill=secondary!20, right of=eda, node distance=3.5cm] (modelo) {Modelado \\ Random Forest y LR};
+    \node[draw, fill=success!20, right of=modelo, node distance=3.5cm] (decision) {Decisión \\ Acción de Negocio};
+    
+    % Flechas principales
+    \draw[->, thick, primary] (etl) -- (eda);
+    \draw[->, thick, primary] (eda) -- (modelo);
+    \draw[->, thick, primary] (modelo) -- (decision);
+    
+    % Flecha de retroalimentación
+    \draw[->, dashed, secondary] (decision) to[out=180, in=0, looseness=1.8] (modelo);
+    
+    % Etiquetas de tiempo
+    \node[below of=etl, node distance=1.2cm, font=\tiny] {Semana 1-2};
+    \node[below of=eda, node distance=1.2cm, font=\tiny] {Semana 2-3};
+    \node[below of=modelo, node distance=1.2cm, font=\tiny] {Semana 3-4};
+    \node[below of=decision, node distance=1.2cm, font=\tiny] {Semana 4-5};
+    
+    % Subtítulos
+    \node[below of=etl, node distance=2.0cm, font=\scriptsize\color{primary}] {Pandas, SQL};
+    \node[below of=eda, node distance=2.0cm, font=\scriptsize\color{accent}] {Seaborn, Matplotlib};
+    \node[below of=modelo, node distance=2.0cm, font=\scriptsize\color{secondary}] {scikit-learn};
+    \node[below of=decision, node distance=2.0cm, font=\scriptsize\color{success}] {Business Strategy};
+\end{tikzpicture}

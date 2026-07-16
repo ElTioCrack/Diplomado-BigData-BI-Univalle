@@ -1,0 +1,91 @@
+% ===================================================================
+% 05_modelado.tex
+% Sección 5: Modelado y Elección del Modelo
+% ===================================================================
+
+\begin{frame}{Modelado y Elección del Modelo}
+    \begin{columns}[t]
+        \column{0.5\linewidth}
+        \begin{block}{Regresión Logística}
+            \centering
+            \textbf{Modelo de clasificación lineal}
+            \begin{itemize}
+                \item \textbf{Por qué}: Interpretable, base de comparación
+                \item \textbf{Qué resuelve}: Predicción binaria Churn/No Churn
+                \item \textbf{Ventaja}: Fácil de explicar a negocio
+                \item \textbf{Desventaja}: Limitado a relaciones lineales
+            \end{itemize}
+        \end{block}
+        
+        \column{0.5\linewidth}
+        \begin{block}{Random Forest}
+            \centering
+            \textbf{Conjunto de árboles de decisión}
+            \begin{itemize}
+                \item \textbf{Por qué}: Captura relaciones no lineales
+                \item \textbf{Qué resuelve}: Mayor capacidad predictiva
+                \item \textbf{Ventaja}: Feature importance automático
+                \item \textbf{Desventaja}: Menos interpretable, más lento
+            \end{itemize}
+        \end{block}
+    \end{columns}
+    
+    \vsp
+    \begin{exampleblock}{Búsqueda de Hiperparámetros}
+        \begin{columns}
+            \column{0.5\linewidth}
+            \textbf{Random Forest}
+            \begin{itemize}
+                \item n\_estimators: [100, 200, 300]
+                \item max\_depth: [5, 10, 15, None]
+                \item min\_samples\_split: [2, 5, 10]
+            \end{itemize}
+            \column{0.5\linewidth}
+            \textbf{Regresión Logística}
+            \begin{itemize}
+                \item C: [0.01, 0.1, 1, 10]
+                \item penalty: ['l1', 'l2']
+                \item solver: ['liblinear', 'saga']
+            \end{itemize}
+        \end{columns}
+        \vsp
+        \textbf{Grid Search} con validación cruzada (3 folds)
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Modelado y Elección del Modelo - Justificación}
+    \begin{columns}[t]
+        \column{0.5\linewidth}
+        \textbf{Por qué estos modelos}
+        \begin{enumerate}
+            \item \textbf{Regresión Logística}
+            \begin{itemize}
+                \item Baseline para comparación
+                \item Interpretabilidad para negocio
+                \item Bajo costo computacional
+            \end{itemize}
+            \item \textbf{Random Forest}
+            \begin{itemize}
+                \item Estado del arte en clasificación
+                \item Maneja no linealidades
+                \item Feature importance nativo
+            \end{itemize}
+        \end{enumerate}
+        
+        \column{0.5\linewidth}
+        \begin{block}{Métrica de Selección}
+            \centering
+            \textbf{Recall (Fuga)}
+            \begin{itemize}
+                \item Costo de FN: Cliente perdido
+                \item Costo de FP: Campaña innecesaria
+                \item Prioridad: Minimizar FN
+            \end{itemize}
+            
+            \vsp
+            \begin{alertblock}{Decisión}
+                Modelo con mayor \highlight{Recall} y \highlight{interpretabilidad}
+            \end{alertblock}
+        \end{block}
+    \end{columns}
+\end{frame}
