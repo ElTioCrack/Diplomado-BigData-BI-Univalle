@@ -1,0 +1,7 @@
+Metric,Value
+Total rows,2238
+Total columns,33
+Null values,0
+Outliers >500k Income,1
+Age < 18,0
+Age > 100,1

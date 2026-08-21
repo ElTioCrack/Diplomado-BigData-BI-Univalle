@@ -1,0 +1,29 @@
+﻿Field,Description,Descripción en español
+ID,Customer's unique identifier,Identificador único del cliente.
+Year_Birth,Customer's birth year,Año de nacimiento del cliente.
+Education,Customer's education level,Nivel educativo del cliente.
+Marital_Status,Customer's marital status,Estado civil del cliente.
+Income ,Customer's yearly household income,Ingreso anual del hogar del cliente.
+Kidhome,Number of children in customer's household,Número de niños en el hogar del cliente.
+Teenhome,Number of teenagers in customer's household,Número de adolescentes en el hogar del cliente.
+Dt_Customer,Date of customer's enrollment with the company,Fecha de incorporación o registro del cliente en la empresa.
+Recency,Number of days since customer's last purchase,Número de días transcurridos desde la última compra del cliente.
+MntWines,Amount spent on wine in the last 2 years,Monto gastado en vinos en los últimos 2 años.
+MntFruits,Amount spent on fruits in the last 2 years,Monto gastado en frutas en los últimos 2 años.
+MntMeatProducts,Amount spent on meat in the last 2 years,Monto gastado en productos cárnicos en los últimos 2 años.
+MntFishProducts,Amount spent on fish in the last 2 years,Monto gastado en productos del mar o pescado en los últimos 2 años.
+MntSweetProducts,Amount spent on sweets in the last 2 years,Monto gastado en dulces en los últimos 2 años.
+MntGoldProds,Amount spent on gold in the last 2 years,Monto gastado en productos golden en los últimos 2 años.
+NumDealsPurchases,Number of purchases made with a discount,Número de compras realizadas con descuento.
+NumWebPurchases,Number of purchases made through the company's web site,Número de compras realizadas a través del sitio web de la empresa.
+NumCatalogPurchases,Number of purchases made using a catalogue,Número de compras realizadas mediante catálogo.
+NumStorePurchases,Number of purchases made directly in stores,Número de compras realizadas directamente en tiendas físicas.
+NumWebVisitsMonth,Number of visits to company's web site in the last month,Número de visitas al sitio web de la empresa en el último mes.
+AcceptedCmp3,"1 if customer accepted the offer in the 3rd campaign, 0 otherwise","Toma el valor 1 si el cliente aceptó la oferta de la campaña 3, y 0 en caso contrario."
+AcceptedCmp4,"1 if customer accepted the offer in the 4th campaign, 0 otherwise","Toma el valor 1 si el cliente aceptó la oferta de la campaña 4, y 0 en caso contrario."
+AcceptedCmp5,"1 if customer accepted the offer in the 5th campaign, 0 otherwise","Toma el valor 1 si el cliente aceptó la oferta de la campaña 5, y 0 en caso contrario."
+AcceptedCmp1,"1 if customer accepted the offer in the 1st campaign, 0 otherwise","Toma el valor 1 si el cliente aceptó la oferta de la campaña 1, y 0 en caso contrario."
+AcceptedCmp2,"1 if customer accepted the offer in the 2nd campaign, 0 otherwise","Toma el valor 1 si el cliente aceptó la oferta de la campaña 2, y 0 en caso contrario."
+Response,"1 if customer accepted the offer in the last campaign, 0 otherwise","Toma el valor 1 si el cliente aceptó la oferta de la última campaña, y 0 en caso contrario."
+Complain,"1 if customer complained in the last 2 years, 0 otherwise","Toma el valor 1 si el cliente presentó un reclamo en los últimos 2 años, y 0 en caso contrario."
+Country,Customer's location,País o ubicación geográfica del cliente.

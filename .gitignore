@@ -1,5 +1,12 @@
 # =================================================================
 # REPOSITORIO: DIPLOMADO BIG DATA, ANALYTICS & BI
+#
+# Estructura por módulo (m1_fundamentos … m5_aplicaciones):
+#   1_clases/    -> grabaciones (ignoradas, ver Multimedia)
+#   2_recursos/  -> material subido por el docente
+#   3_tareas/    -> entregas y notebooks de tareas
+#   4_proyecto/  -> proyecto integrador del módulo
+#   5_notas/     -> notas propias del módulo (NOTAS.md)
 # =================================================================
 
 # --- Python & virtual environments ---
@@ -25,6 +32,7 @@ htmlcov/
 .ipynb_checkpoints/
 .virtual_documents/
 *.nbconvert.ipynb
+Untitled*.ipynb
 
 # --- LaTeX / document build artifacts ---
 *.aux
@@ -53,17 +61,30 @@ htmlcov/
 *.tar
 *.gz
 
+# --- Big Data / Spark / Hadoop (artefactos locales de ejecución) ---
+spark-warehouse/
+metastore_db/
+derby.log
+_SUCCESS
+*.crc
+
 # --- Databases & secrets ---
 *.sqlite3
 *.db
 *.sql
 .env
+.env.*
 .flaskenv
+*.pem
+*.key
+credentials.json
+service-account*.json
 
 # --- Temporary / editor / OS files ---
 *.tmp
 *.temp
 *.bak
+*.bk
 *.orig
 *.swp
 *.swo
